@@ -8,8 +8,8 @@ const CtaSection = () => {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-primary/90 dark:bg-primary/80 z-10"></div>
         <img
-          src="https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=1920"
-          alt="Event background"
+          src="https://images.pexels.com/photos/2941367/pexels-photo-2941367.jpeg"
+          alt="Pakistani wedding celebration"
           className="absolute inset-0 w-full h-full object-cover"
         />
       </div>

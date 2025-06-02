@@ -15,10 +15,10 @@ const HeroSection = () => {
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          poster="https://images.pexels.com/photos/2291462/pexels-photo-2291462.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          poster="https://images.pexels.com/photos/2788492/pexels-photo-2788492.jpeg"
         >
           <source 
-            src="https://player.vimeo.com/external/370467553.hd.mp4?s=ce49c8c6d8e28a89298ffb4c53a2e842df6bc795&profile_id=175&oauth2_token_id=57447761" 
+            src="https://player.vimeo.com/external/477260057.hd.mp4?s=6b1c32d2e99c1c598c6517bad28b6734c3e681f1&profile_id=175&oauth2_token_id=57447761" 
             type="video/mp4" 
           />
           Your browser does not support the video tag.
