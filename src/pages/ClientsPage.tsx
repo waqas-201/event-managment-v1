@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import { Star, Quote } from 'lucide-react';
@@ -129,7 +130,7 @@ const ClientsPage = () => {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-black/50 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50 z-10"></div>
           <img
             src="https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg?auto=compress&cs=tinysrgb&w=1920"
             alt="Our clients"
@@ -143,17 +144,17 @@ const ClientsPage = () => {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Our <span className="text-secondary">Clients</span>
+              Our <span className="text-primary">Trusted</span> Partners
             </h1>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto">
-              Trusted by Pakistan's leading organizations
+            <p className="text-xl text-white max-w-2xl mx-auto">
+              Partnering with Pakistan's leading organizations to create exceptional experiences
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 bg-white dark:bg-gray-950">
+      <section className="py-12 bg-primary/5 dark:bg-gray-900/50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
@@ -168,10 +169,10 @@ const ClientsPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center"
+                className="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md"
               >
                 <h3 className="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.value}</h3>
-                <p className="text-gray-600 dark:text-gray-400">{stat.label}</p>
+                <p className="text-gray-800 dark:text-gray-200">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -179,63 +180,6 @@ const ClientsPage = () => {
       </section>
 
       {/* Client Logos Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Trusted by Industry Leaders
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">
-              We're proud to work with some of Pakistan's most respected organizations
-            </p>
-            
-            {/* Category Filter */}
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-full transition-colors ${
-                    selectedCategory === category
-                      ? 'bg-primary text-white'
-                      : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700'
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {filteredClients.map((client, index) => (
-              <motion.div
-                key={client.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md hover:shadow-lg transition-all flex items-center justify-center"
-              >
-                <img
-                  src={client.logo}
-                  alt={client.name}
-                  className="h-16 md:h-20 w-auto object-contain filter dark:brightness-0 dark:invert"
-                />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Client Testimonials */}
       <section className="py-20 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <motion.div
@@ -246,10 +190,68 @@ const ClientsPage = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              What Our Clients Say
+              Trusted by <span className="text-primary">Industry Leaders</span>
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Don't just take our word for it - hear from some of our satisfied clients
+            <p className="text-gray-800 dark:text-gray-200 max-w-2xl mx-auto mb-8">
+              We're proud to work with some of Pakistan's most respected organizations
+            </p>
+            
+            {/* Category Filter */}
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-6 py-2.5 rounded-full transition-all font-medium ${
+                    selectedCategory === category
+                      ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                      : 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {filteredClients.map((client, index) => (
+              <motion.div
+                key={client.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, shadow: '0 8px 30px rgba(0,0,0,0.12)' }}
+                className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all flex flex-col items-center justify-center gap-4 border border-gray-100 dark:border-gray-700"
+              >
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className="h-16 md:h-20 w-auto object-contain filter dark:brightness-0 dark:invert"
+                />
+                <p className="text-sm font-medium text-gray-800 dark:text-gray-200">{client.category}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Client Testimonials */}
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              What Our <span className="text-primary">Clients</span> Say
+            </h2>
+            <p className="text-gray-800 dark:text-gray-200 max-w-2xl mx-auto">
+              Don't just take our word for it - hear from our satisfied clients
             </p>
           </motion.div>
 
@@ -261,28 +263,28 @@ const ClientsPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-gray-50 dark:bg-gray-900 p-8 rounded-lg"
+                className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg"
               >
-                <Quote className="text-primary/30 w-12 h-12 mb-4" />
-                <p className="text-gray-600 dark:text-gray-400 mb-6 italic">
+                <Quote className="text-primary w-12 h-12 mb-6 opacity-20" />
+                <p className="text-gray-800 dark:text-gray-200 mb-8 italic">
                   "{testimonial.quote}"
                 </p>
                 <div className="flex items-center gap-4">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover"
+                    className="w-14 h-14 rounded-full object-cover"
                   />
                   <div>
-                    <h4 className="font-bold">{testimonial.name}</h4>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">{testimonial.role}</p>
+                    <h4 className="font-bold text-gray-900 dark:text-white">{testimonial.name}</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">{testimonial.role}</p>
                   </div>
                 </div>
                 <div className="flex gap-1 mt-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star
                       key={i}
-                      className="w-5 h-5 text-yellow-400"
+                      className="w-5 h-5 text-yellow-500"
                       fill="currentColor"
                     />
                   ))}
